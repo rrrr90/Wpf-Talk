@@ -23,6 +23,25 @@ namespace Wpf_Talk.Controls
         public TitleBar()
         {
             InitializeComponent();
+
+            btnExit.Click += BtnExit_Click;
+            btnMaximize.Click += BtnMaximize_Click;
+            btnMinimize.Click += BtnMinimize_Click;
+        }
+
+        private void BtnMinimize_Click(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void BtnMaximize_Click(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void BtnExit_Click(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
         }
     }
 }

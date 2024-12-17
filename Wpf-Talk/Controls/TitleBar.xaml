@@ -14,16 +14,20 @@
             <Setter Property="BorderBrush" Value="Transparent"/>
             <Setter Property="DockPanel.Dock" Value="Right"/>
         </Style>
+        <Style TargetType="{x:Type fa6:SvgAwesome}">
+            <Setter Property="PrimaryColor" Value="{StaticResource ColorGray}"/>
+        </Style>
     </UserControl.Resources>
-    <DockPanel Background="{StaticResource ColorPrimary}"
+    <DockPanel x:Name="pnTitle"
+               Background="{StaticResource ColorPrimary}"
                LastChildFill="False">
-        <Button>
+        <Button x:Name="btnExit">
             <fa6:SvgAwesome Icon="Solid_Xmark"/>
         </Button>
-        <Button>
+        <Button x:Name="btnMaximize">
             <fa6:SvgAwesome Icon="Regular_Square"/>
         </Button>
-        <Button>
+        <Button x:Name="btnMinimize">
             <fa6:SvgAwesome Icon="Solid_Minus"/>
         </Button>
     </DockPanel>
