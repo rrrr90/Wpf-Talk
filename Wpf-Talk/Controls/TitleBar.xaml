@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:Wpf_Talk.Controls"
+             xmlns:local="clr-namespace:Wpf_Talk.Controls" xmlns:fa6="http://schemas.fontawesome.com/icons/svg"
              mc:Ignorable="d" 
              d:DesignHeight="20" d:DesignWidth="200">
     <UserControl.Resources>
@@ -17,9 +17,15 @@
     </UserControl.Resources>
     <DockPanel Background="{StaticResource ColorPrimary}"
                LastChildFill="False">
-        <Button/>
-        <Button/>
-        <Button/>
+        <Button>
+            <fa6:SvgAwesome Icon="Solid_Xmark"/>
+        </Button>
+        <Button>
+            <fa6:SvgAwesome Icon="Regular_Square"/>
+        </Button>
+        <Button>
+            <fa6:SvgAwesome Icon="Solid_Minus"/>
+        </Button>
     </DockPanel>
     
 </UserControl>
