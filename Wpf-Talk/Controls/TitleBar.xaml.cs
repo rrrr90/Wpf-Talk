@@ -21,6 +21,14 @@ namespace Wpf_Talk.Controls
     /// </summary>
     public partial class TitleBar : UserControl
     {
+        private Window _parentWindow;
+
+        public Window ParentWindow
+        {
+            get { return _parentWindow ??= this.FindParent<Window>()!; }
+            set { _parentWindow = value; }
+        }
+
         public TitleBar()
         {
             InitializeComponent();
@@ -32,20 +40,17 @@ namespace Wpf_Talk.Controls
 
         private void BtnMinimize_Click(object sender, RoutedEventArgs e)
         {
-            btnMinimize.FindParent<Window>().WindowState = WindowState.Minimized;
+            ParentWindow.WindowState = WindowState.Minimized;
         }
 
         private void BtnMaximize_Click(object sender, RoutedEventArgs e)
         {
-            var window = btnMaximize.FindParent<Window>();
-            if (window == null) return;
-
-            window.WindowState = (window.WindowState == WindowState.Maximized) ? WindowState.Normal : WindowState.Maximized;
+            ParentWindow.WindowState = (ParentWindow.WindowState == WindowState.Maximized) ? WindowState.Normal : WindowState.Maximized;
         }
 
         private void BtnExit_Click(object sender, RoutedEventArgs e)
         {
-            btnExit.FindParent<Window>().Close();
+            ParentWindow.Close();
         }
     }
 }
