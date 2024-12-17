@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Wpf_Talk.Views"
+        xmlns:controls="clr-namespace:Wpf_Talk.Controls"
         mc:Ignorable="d"
         WindowStyle="None"
         Title="MainView" Height="550" Width="350">
@@ -14,10 +15,8 @@
         </Grid.RowDefinitions>
         
         <!--Title Bar-->
-        <StackPanel Grid.Row="0"
-                    Background="Red"
-                    Height="20"/>
-        
+        <controls:TitleBar Grid.Row="0"/>
+
         <!--Body-->
         <StackPanel Grid.Row="1"
                     Background="Blue"/>
