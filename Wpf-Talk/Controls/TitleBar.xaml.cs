@@ -37,7 +37,10 @@ namespace Wpf_Talk.Controls
 
         private void BtnMaximize_Click(object sender, RoutedEventArgs e)
         {
-            btnMaximize.FindParent<Window>().WindowState = WindowState.Maximized;
+            var window = btnMaximize.FindParent<Window>();
+            if (window == null) return;
+
+            window.WindowState = (window.WindowState == WindowState.Maximized) ? WindowState.Normal : WindowState.Maximized;
         }
 
         private void BtnExit_Click(object sender, RoutedEventArgs e)
