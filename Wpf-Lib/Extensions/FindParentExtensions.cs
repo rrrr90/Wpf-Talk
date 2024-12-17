@@ -24,8 +24,7 @@ namespace Wpf_Lib.Extensions
             if (parent == null) return null;
 
             var frameworkElement = parent as FrameworkElement;
-            if (parentName == null ||
-                frameworkElement is T && parentName == frameworkElement.Name) return parent as T;
+            if ((parentName == null || parentName == frameworkElement?.Name) && frameworkElement is T) return parent as T;
 
             return FindParent<T>(parent, parentName);
         }
