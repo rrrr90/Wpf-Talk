@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Wpf_Lib.Extensions;
 
 namespace Wpf_Talk.Controls
 {
@@ -31,17 +32,17 @@ namespace Wpf_Talk.Controls
 
         private void BtnMinimize_Click(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            btnMinimize.FindParent<Window>().WindowState = WindowState.Minimized;
         }
 
         private void BtnMaximize_Click(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            btnMaximize.FindParent<Window>().WindowState = WindowState.Maximized;
         }
 
         private void BtnExit_Click(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            btnExit.FindParent<Window>().Close();
         }
     }
 }
