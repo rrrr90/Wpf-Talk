@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,8 +20,17 @@ namespace Wpf_Talk.Controls
     /// <summary>
     /// TitleBar.xaml에 대한 상호 작용 논리
     /// </summary>
+    [ObservableObject]
     public partial class TitleBar : UserControl
     {
+        private WindowState _winState;
+
+        public WindowState WinState
+        {
+            get { return _winState; }
+            set { SetProperty(ref _winState, value); }
+        }
+
         private Window _parentWindow;
 
         public Window ParentWindow
@@ -41,11 +51,13 @@ namespace Wpf_Talk.Controls
         private void BtnMinimize_Click(object sender, RoutedEventArgs e)
         {
             ParentWindow.WindowState = WindowState.Minimized;
+            WinState = ParentWindow.WindowState;
         }
 
         private void BtnMaximize_Click(object sender, RoutedEventArgs e)
         {
             ParentWindow.WindowState = (ParentWindow.WindowState == WindowState.Maximized) ? WindowState.Normal : WindowState.Maximized;
+            WinState = ParentWindow.WindowState;
         }
 
         private void BtnExit_Click(object sender, RoutedEventArgs e)

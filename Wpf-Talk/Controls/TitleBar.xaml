@@ -3,10 +3,14 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:Wpf_Talk.Controls" xmlns:fa6="http://schemas.fontawesome.com/icons/svg"
+             xmlns:local="clr-namespace:Wpf_Talk.Controls"
+             xmlns:fa6="http://schemas.fontawesome.com/icons/svg"
+             xmlns:converters="clr-namespace:Wpf_Talk.Converters"
              mc:Ignorable="d" 
-             d:DesignHeight="20" d:DesignWidth="200">
+             d:DesignHeight="20" d:DesignWidth="200"
+             x:Name="root">
     <UserControl.Resources>
+        <converters:WindowStateMarginConverter x:Key="WindowStateMarginConverter"/>
         <Style TargetType="{x:Type Button}">
             <Setter Property="Height" Value="20"/>
             <Setter Property="Width" Value="25"/>
@@ -22,13 +26,16 @@
     <DockPanel x:Name="pnTitle"
                Background="{StaticResource ColorPrimary}"
                LastChildFill="False">
-        <Button x:Name="btnExit">
+        <Button x:Name="btnExit"
+                Margin="{Binding WinState, ElementName=root, Converter={StaticResource WindowStateMarginConverter}, ConverterParameter=Exit}">
             <fa6:SvgAwesome Icon="Solid_Xmark"/>
         </Button>
-        <Button x:Name="btnMaximize">
+        <Button x:Name="btnMaximize"
+                Margin="{Binding WinState, ElementName=root, Converter={StaticResource WindowStateMarginConverter}}">
             <fa6:SvgAwesome Icon="Regular_Square"/>
         </Button>
-        <Button x:Name="btnMinimize">
+        <Button x:Name="btnMinimize"
+                Margin="{Binding WinState, ElementName=root, Converter={StaticResource WindowStateMarginConverter}}">
             <fa6:SvgAwesome Icon="Solid_Minus"/>
         </Button>
     </DockPanel>
