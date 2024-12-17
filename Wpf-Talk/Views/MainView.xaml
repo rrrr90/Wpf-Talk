@@ -8,6 +8,10 @@
         mc:Ignorable="d"
         WindowStyle="None"
         Title="MainView" Height="550" Width="350">
+    <WindowChrome.WindowChrome>
+        <WindowChrome CaptionHeight="20"
+                      ResizeBorderThickness="2"/>
+    </WindowChrome.WindowChrome>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
