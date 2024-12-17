@@ -6,6 +6,6 @@
              xmlns:local="clr-namespace:Wpf_Talk.Controls"
              mc:Ignorable="d" 
              d:DesignHeight="20" d:DesignWidth="200">
-    <DockPanel Background="Yellow"/>
+    <DockPanel Background="{StaticResource ColorPrimary}"/>
     
 </UserControl>
