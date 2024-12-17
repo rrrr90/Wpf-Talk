@@ -16,7 +16,6 @@ namespace Wpf_Lib.Extensions
             return FindParent<T>(child, null);
         }
 
-
         public static T? FindParent<T>(this DependencyObject child, string? parentName)
             where T : DependencyObject
         {
@@ -24,7 +23,7 @@ namespace Wpf_Lib.Extensions
             if (parent == null) return null;
 
             var frameworkElement = parent as FrameworkElement;
-            if ((parentName == null || parentName == frameworkElement?.Name) && frameworkElement is T) return parent as T;
+            if (frameworkElement is T && (parentName == null || parentName == frameworkElement?.Name)) return parent as T;
 
             return FindParent<T>(parent, parentName);
         }
