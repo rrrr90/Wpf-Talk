@@ -6,6 +6,20 @@
              xmlns:local="clr-namespace:Wpf_Talk.Controls"
              mc:Ignorable="d" 
              d:DesignHeight="20" d:DesignWidth="200">
-    <DockPanel Background="{StaticResource ColorPrimary}"/>
+    <UserControl.Resources>
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="Height" Value="20"/>
+            <Setter Property="Width" Value="25"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="DockPanel.Dock" Value="Right"/>
+        </Style>
+    </UserControl.Resources>
+    <DockPanel Background="{StaticResource ColorPrimary}"
+               LastChildFill="False">
+        <Button/>
+        <Button/>
+        <Button/>
+    </DockPanel>
     
 </UserControl>
