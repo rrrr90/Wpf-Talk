@@ -2,6 +2,7 @@
 using System.Configuration;
 using System.Data;
 using System.Windows;
+using Wpf_Talk.Views;
 
 namespace Wpf_Talk
 {
@@ -19,7 +20,7 @@ namespace Wpf_Talk
 
         private void App_Startup(object sender, StartupEventArgs e)
         {
-            var mainWindow = App.Current.Services.GetService<MainWindow>();
+            var mainWindow = App.Current.Services.GetService<MainView>();
             MainWindow.Show();
         }
 
@@ -41,7 +42,7 @@ namespace Wpf_Talk
             var services = new ServiceCollection();
 
             // Views
-            services.AddSingleton<MainWindow>();
+            services.AddSingleton<MainView>();
 
             return services.BuildServiceProvider();
         }
