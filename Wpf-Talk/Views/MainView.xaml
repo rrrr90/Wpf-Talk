@@ -5,8 +5,21 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Wpf_Talk.Views"
         mc:Ignorable="d"
-        Title="MainView" Height="450" Width="800">
+        WindowStyle="None"
+        Title="MainView" Height="550" Width="350">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
         
+        <!--Title Bar-->
+        <StackPanel Grid.Row="0"
+                    Background="Red"
+                    Height="20"/>
+        
+        <!--Body-->
+        <StackPanel Grid.Row="1"
+                    Background="Blue"/>
     </Grid>
 </Window>
