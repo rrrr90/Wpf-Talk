@@ -6,8 +6,9 @@
              xmlns:local="clr-namespace:Wpf_Talk.Controls"
              xmlns:fa6="http://schemas.fontawesome.com/icons/svg"
              xmlns:system="clr-namespace:System;assembly=System.Runtime"
-             mc:Ignorable="d" 
-             d:DesignHeight="550" d:DesignWidth="350">
+             mc:Ignorable="d"
+             d:DesignHeight="550" d:DesignWidth="350"
+             Background="{StaticResource ColorPrimary}">
     <UserControl.Resources>
         <system:Double x:Key="ElementHeight">35</system:Double>
 
@@ -17,7 +18,7 @@
             <Setter Property="BorderBrush" Value="Transparent"/>
         </Style>
     </UserControl.Resources>
-    <Grid Background="{StaticResource ColorPrimary}">
+    <Grid Margin="20 40 20 20">
         <Grid.RowDefinitions>
             <RowDefinition Height="1.3*"/>
             <RowDefinition Height="3*"/>
