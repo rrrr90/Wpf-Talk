@@ -5,9 +5,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Wpf_Talk.Views"
         xmlns:controls="clr-namespace:Wpf_Talk.Controls"
+        xmlns:v="clr-namespace:Wpf_Talk.Views"
+        xmlns:vm="clr-namespace:Wpf_Talk.ViewModels"
         mc:Ignorable="d"
         WindowStyle="None"
         Title="MainView" Height="550" Width="350">
+    <Window.Resources>
+        <DataTemplate DataType="{x:Type vm:SignInViewModel}">
+            <controls:SignInControl/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:SignUpViewModel}">
+            <controls:SignUpControl/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:ChangePwdViewModel}">
+            <controls:ChangePwdControl/>
+        </DataTemplate>
+    </Window.Resources>
     <WindowChrome.WindowChrome>
         <WindowChrome CaptionHeight="20"
                       ResizeBorderThickness="2"/>
@@ -22,7 +35,21 @@
         <controls:TitleBar Grid.Row="0"/>
 
         <!--Body-->
-        <StackPanel Grid.Row="1"
-                    Background="Blue"/>
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="20"/>
+            </Grid.RowDefinitions>
+
+            <ContentControl Content="{Binding CurrentViewModel}"/>
+            <StackPanel Grid.Row="1" Orientation="Horizontal">
+                <Button Content="로그인"
+                        Command="{Binding ToSignInCommand}"/>
+                <Button Content="비밀번호 변경"
+                        Command="{Binding ToChangePwdCommand}"/>
+                <Button Content="회원가입"
+                        Command="{Binding ToSignUpCommand}"/>
+            </StackPanel>
+        </Grid>
     </Grid>
 </Window>
