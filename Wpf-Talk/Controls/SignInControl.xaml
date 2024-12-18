@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Wpf_Talk.Controls"
+             xmlns:controls="clr-namespace:Wpf_Lib.Controls;assembly=Wpf-Lib"
              xmlns:fa6="http://schemas.fontawesome.com/icons/svg"
              xmlns:system="clr-namespace:System;assembly=System.Runtime"
              mc:Ignorable="d"
@@ -33,8 +34,11 @@
         <!--Body-->
         <StackPanel Grid.Row="1"
                     Margin="30 10">
-            <ComboBox Height="{StaticResource ElementHeight}"
-                      VerticalContentAlignment="Center"/>
+            <controls:TextBoxControl Background="White"
+                                     Height="35"
+                                     VerticalAlignment="Center"
+                                     WaterMarkText="이메일을 입력하세요."
+                                     WaterMarkTextColor="Red"/>
             <PasswordBox Height="{StaticResource ElementHeight}"
                          VerticalContentAlignment="Center"/>
             <Button Content="로그인"

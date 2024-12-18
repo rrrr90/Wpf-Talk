@@ -53,7 +53,7 @@ namespace Wpf_Lib.Controls
 
         // Using a DependencyProperty as the backing store for WaterMarkText.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty WaterMarkTextProperty =
-            DependencyProperty.Register("WaterMarkText", typeof(string), typeof(TextBoxControl), new PropertyMetadata(0));
+            DependencyProperty.Register("WaterMarkText", typeof(string), typeof(TextBoxControl), new PropertyMetadata(null));
 
         public Brush WaterMarkTextColor
         {
