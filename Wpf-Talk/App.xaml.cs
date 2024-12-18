@@ -2,6 +2,7 @@
 using System.Configuration;
 using System.Data;
 using System.Windows;
+using Wpf_Talk.ViewModels;
 using Wpf_Talk.Views;
 
 namespace Wpf_Talk
@@ -20,7 +21,9 @@ namespace Wpf_Talk
 
         private void App_Startup(object sender, StartupEventArgs e)
         {
-            var mainWindow = App.Current.Services.GetService<MainView>();
+            var mainWindow = Services.GetService<MainView>();
+            var mainViewModel = Services.GetService<MainViewModel>();
+            mainWindow.DataContext = mainViewModel;
             MainWindow.Show();
         }
 
@@ -43,6 +46,12 @@ namespace Wpf_Talk
 
             // Views
             services.AddSingleton<MainView>();
+
+            // ViewModels
+            services.AddTransient<MainViewModel>();
+            services.AddTransient<SignInViewModel>();
+            services.AddTransient<SignUpViewModel>();
+            services.AddTransient<ChangePwdViewModel>();
 
             return services.BuildServiceProvider();
         }

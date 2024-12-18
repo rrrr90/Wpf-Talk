@@ -7,6 +7,15 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="Controls\ChangePwdControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Controls\SignInControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Controls\SignUpControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Controls\TitleBar.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -15,6 +24,15 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="Controls\ChangePwdControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Controls\SignInControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Controls\SignUpControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Controls\TitleBar.xaml">
       <SubType>Designer</SubType>
     </Page>
