@@ -4,10 +4,14 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Wpf_Lib.Controls"
+             xmlns:converters="clr-namespace:Wpf_Lib.Converters"
              mc:Ignorable="d" 
              d:DesignHeight="50" d:DesignWidth="200"
              x:Name="root">
     <UserControl.Resources>
+        <converters:ValidatingBorderBrushConverter x:Key="ValidatingBorderBrushConverter"/>
+        <converters:ValidatingBorderThicknessConverter x:Key="ValidatingBorderThicknessConverter"/>
+
         <Style x:Key="BaseControl" TargetType="{x:Type FrameworkElement}">
             <Setter Property="Control.FontSize" Value="{Binding Fontsize, ElementName=root}"/>
             <Setter Property="Control.FontFamily" Value="{Binding FontFamily, ElementName=root}"/>
@@ -35,6 +39,25 @@
                     Value="{Binding Text, ElementName=root, UpdateSourceTrigger=PropertyChanged}"/>
             <Setter Property="Background" Value="Transparent"/>
             <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="BorderThickness">
+                <Setter.Value>
+                    <MultiBinding Converter="{StaticResource ValidatingBorderThicknessConverter}">
+                        <!--RelativeSource="{RelativeSource AncestorType=UserControl}"  ==  ElementName="root"-->
+                        <Binding Path="Validating" RelativeSource="{RelativeSource AncestorType=UserControl}"/>
+                        <Binding Path="BorderThickness" ElementName="root"/>
+                    </MultiBinding>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="BorderBrush">
+                <Setter.Value>
+                    <MultiBinding Converter="{StaticResource ValidatingBorderBrushConverter}">
+                        <!--values=Path의 배열 // Index는 위에서부터 순서대로-->
+                        <!--Validating의 값은 xaml.cs의 prop에서 가져온다-->
+                        <Binding Path="Validating" ElementName="root"/>
+                        <Binding Path="BorderBrush" ElementName="root"/>
+                    </MultiBinding>
+                </Setter.Value>
+            </Setter>
         </Style>
     </UserControl.Resources>
     <Grid>

@@ -38,7 +38,8 @@
                                      Height="35"
                                      VerticalAlignment="Center"
                                      WaterMarkText="이메일을 입력하세요."
-                                     WaterMarkTextColor="Red"/>
+                                     WaterMarkTextColor="Red"
+                                     Validating="True"/>
             <PasswordBox Height="{StaticResource ElementHeight}"
                          VerticalContentAlignment="Center"/>
             <Button Content="로그인"
