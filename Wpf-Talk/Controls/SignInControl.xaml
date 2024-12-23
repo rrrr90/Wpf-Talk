@@ -40,8 +40,10 @@
                                      WaterMarkText="이메일을 입력하세요."
                                      WaterMarkTextColor="Red"
                                      Validating="True"/>
-            <PasswordBox Height="{StaticResource ElementHeight}"
-                         VerticalContentAlignment="Center"/>
+            <controls:PasswordBoxControl Background="White"
+                                         WaterMarkText="비밀번호를 입력하세요."
+                                         WaterMarkTextColor="Red"
+                                         Height="{StaticResource ElementHeight}"/>
             <Button Content="로그인"
                     Height="{StaticResource ElementHeight}"
                     Margin="0 10 0 0"/>
