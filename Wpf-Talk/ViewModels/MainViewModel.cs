@@ -17,7 +17,12 @@ namespace Wpf_Talk.ViewModels
         public INotifyPropertyChanged CurrentViewModel
         {
             get => _currentViewModel;
-            set { SetProperty(ref _currentViewModel, value); }
+            set
+            {
+                if (_currentViewModel == value)
+                    return;
+                SetProperty(ref _currentViewModel, value);
+            }
         }
 
         public MainViewModel()

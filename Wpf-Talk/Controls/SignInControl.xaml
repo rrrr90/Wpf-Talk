@@ -39,7 +39,7 @@
                                      VerticalAlignment="Center"
                                      WaterMarkText="이메일을 입력하세요."
                                      WaterMarkTextColor="Red"
-                                     Validating="True"/>
+                                     Validating="False"/>
             <controls:PasswordBoxControl Background="White"
                                          WaterMarkText="비밀번호를 입력하세요."
                                          WaterMarkTextColor="Red"
@@ -99,7 +99,8 @@
             <Button Grid.Column="4"
                     Content="회원가입"
                     Style="{StaticResource BottomButton}"
-                    FontSize="{StaticResource FontSmall}"/>
+                    FontSize="{StaticResource FontSmall}"
+                    Command="{Binding ToSignUpCommand}"/>
         </Grid>
     </Grid>
 </UserControl>
