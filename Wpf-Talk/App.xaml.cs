@@ -2,6 +2,8 @@
 using System.Configuration;
 using System.Data;
 using System.Windows;
+using Wpf_Talk.Services;
+using Wpf_Talk.Stores;
 using Wpf_Talk.ViewModels;
 using Wpf_Talk.Views;
 
@@ -43,6 +45,12 @@ namespace Wpf_Talk
         private static ServiceProvider ConfigureServices()
         {
             var services = new ServiceCollection();
+
+            // Stores
+            services.AddSingleton<MainNavigationStore>();
+
+            // Services
+            services.AddSingleton<INavigationService, NavigationService>();
 
             // Views
             services.AddSingleton<MainView>();

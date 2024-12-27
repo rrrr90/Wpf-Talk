@@ -9,12 +9,13 @@ using Microsoft.Extensions.DependencyInjection;
 using System.Windows.Input;
 using CommunityToolkit.Mvvm.Input;
 using Wpf_Talk.Stores;
+using Wpf_Talk.Services;
 
 namespace Wpf_Talk.ViewModels
 {
     internal partial class MainViewModel : ObservableObject
     {
-        private INotifyPropertyChanged _currentViewModel;
+        private INotifyPropertyChanged? _currentViewModel;
         private readonly MainNavigationStore _mainNavigationStore;
 
         public INotifyPropertyChanged? CurrentViewModel
@@ -24,15 +25,15 @@ namespace Wpf_Talk.ViewModels
             {
                 if (_currentViewModel == value)
                     return;
-                SetProperty(ref _currentViewModel, value);
+                 SetProperty(ref _currentViewModel, value);
             }
         }
 
-        public MainViewModel(MainNavigationStore mainNavigationStore)
+        public MainViewModel(MainNavigationStore mainNavigationStore, INavigationService navigationService)
         {
-            _currentViewModel = App.Current.Services.GetService<SignInViewModel>()!;
-            this._mainNavigationStore = mainNavigationStore;
+            _mainNavigationStore = mainNavigationStore;
             _mainNavigationStore.CurrentViewModelChanged += CurrentViewModelChanged;
+            navigationService.Navigate(NavType.SignInView);
         }
 
         private void CurrentViewModelChanged()
