@@ -28,13 +28,7 @@ namespace Wpf_DB.Database
         public long Execute(string query, SqlParameter[]? parms = null)
         {
             using MySqlCommand cmd = new MySqlCommand(query, _connection);
-            if (parms != null)
-            {
-                foreach (SqlParameter parm in parms)
-                {
-                    cmd.Parameters.AddWithValue(parm.ParameterName, parm.Value);
-                }
-            }
+            AddParameters(cmd, parms);
             cmd.ExecuteNonQuery();
             return cmd.LastInsertedId;
         }
@@ -42,19 +36,22 @@ namespace Wpf_DB.Database
         public IDataReader GetReader(string query, SqlParameter[]? parms = null)
         {
             using MySqlCommand cmd = new MySqlCommand(query, _connection);
-            if (parms != null)
-            {
-                foreach (SqlParameter parm in parms)
-                {
-                    cmd.Parameters.AddWithValue(parm.ParameterName, parm.Value);
-                }
-            }
+            AddParameters(cmd, parms);
             return cmd.ExecuteReader();
         }
 
         public DataTable GetDataTable(string query, SqlParameter[]? parms = null)
         {
             using MySqlCommand cmd = new MySqlCommand(query, _connection);
+            AddParameters(cmd, parms);
+            using MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
+            DataTable table = new DataTable();
+            adapter.Fill(table);
+            return table;
+        }
+
+        private void AddParameters(MySqlCommand cmd, SqlParameter[]? parms)
+        {
             if (parms != null)
             {
                 foreach (SqlParameter parm in parms)
@@ -62,10 +59,6 @@ namespace Wpf_DB.Database
                     cmd.Parameters.AddWithValue(parm.ParameterName, parm.Value);
                 }
             }
-            using MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
-            DataTable table = new DataTable();
-            adapter.Fill(table);
-            return table;
         }
     }
 }
