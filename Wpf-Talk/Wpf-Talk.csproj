@@ -23,6 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Wpf-DB\Wpf-DB.csproj" />
     <ProjectReference Include="..\Wpf-Lib\Wpf-Lib.csproj" />
   </ItemGroup>
 
