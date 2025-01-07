@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Wpf_DB.Database
 {
-    public class MySqlDB
+    public class MySqlDB : IDisposable
     {
         private readonly string _connectionString;
         private MySqlConnection? _connection;
@@ -59,6 +59,12 @@ namespace Wpf_DB.Database
                     cmd.Parameters.AddWithValue(parm.ParameterName, parm.Value);
                 }
             }
+        }
+
+        public void Dispose()
+        {
+            _connection?.Dispose();
+            _connection = null;
         }
     }
 }
