@@ -9,12 +9,14 @@ using System.Windows;
 using System.Windows.Input;
 using Wpf_Talk.Models;
 using Wpf_Talk.Repositories;
+using Wpf_Talk.Services;
 
 namespace Wpf_Talk.ViewModels
 {
     internal class SignUpViewModel : ObservableObject
     {
-		private readonly IAccountRepository _accountRepository;
+        private readonly INavigationService _navigationService;
+        private readonly IAccountRepository _accountRepository;
 		private readonly Random _random = new Random();
 
 		private string _email = default!;
@@ -39,10 +41,11 @@ namespace Wpf_Talk.ViewModels
 			set { SetProperty(ref _passwordR, value); }
 		}
 
-        public SignUpViewModel(IAccountRepository accountRepository)
-        {
+		public SignUpViewModel(INavigationService navigationService, IAccountRepository accountRepository)
+		{
+			this._navigationService = navigationService;
 			this._accountRepository = accountRepository;
-        }
+		}
 
         public ICommand SignUpCommand => new RelayCommand<object>(RequestSignUp);
 
@@ -69,6 +72,7 @@ namespace Wpf_Talk.ViewModels
 			if(id >= 0)
 			{
 				MessageBox.Show("OK");
+				_navigationService.Navigate(NavType.SignInView);
 			}
 		}
 
