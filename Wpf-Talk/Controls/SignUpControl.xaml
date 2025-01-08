@@ -34,25 +34,31 @@
         <StackPanel Grid.Row="1"
                     Margin="30 10">
             <controls:TextBoxControl Background="White"
+                                     Text="{Binding Email}"
                                      Height="{StaticResource ElementHeight}"
                                      VerticalAlignment="Center"
                                      WaterMarkText="이메일을 입력하세요."
                                      WaterMarkTextColor="Black"
                                      Validating="False"/>
 
-            <controls:PasswordBoxControl Background="White"
+            <controls:PasswordBoxControl x:Name="pwdbox"
+                                         Background="White"
+                                         Password="{Binding Password}"
                                          WaterMarkText="비밀번호를 입력하세요."
                                          WaterMarkTextColor="Black"
                                          Margin="0 10 0 0"
                                          Height="{StaticResource ElementHeight}"/>
             
-            <controls:PasswordBoxControl Background="White"
+            <controls:PasswordBoxControl x:Name="pwdbox_re"
+                                         Background="White"
+                                         Password="{Binding PasswordR}"
                                          WaterMarkText="비밀번호 재입력"
                                          WaterMarkTextColor="Black"
                                          Margin="0 10 0 0"
                                          Height="{StaticResource ElementHeight}"/>
             <Button Content="회원가입"
                     Height="{StaticResource ElementHeight}"
+                    Command="{Binding SignUpCommand}"
                     Margin="0 10 0 0"/>
         </StackPanel>
 

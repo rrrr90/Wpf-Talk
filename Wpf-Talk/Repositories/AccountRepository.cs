@@ -1,14 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data;
 using System.Linq;
-using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
+using Wpf_Talk.Models;
 using Wpf_DB.Database;
-using Wpf_DB.Model;
 
-namespace Wpf_DB.Repositories
+namespace Wpf_Talk.Repositories
 {
     public class AccountRepository : RepositoryBase, IAccountRepository
     {
