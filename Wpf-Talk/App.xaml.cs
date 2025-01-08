@@ -2,7 +2,7 @@
 using System.Configuration;
 using System.Data;
 using System.Windows;
-using Wpf_DB.Repositories;
+using Wpf_Talk.Repositories;
 using Wpf_Talk.Services;
 using Wpf_Talk.Stores;
 using Wpf_Talk.ViewModels;

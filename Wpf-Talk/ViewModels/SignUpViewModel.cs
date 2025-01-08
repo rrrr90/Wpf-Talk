@@ -7,8 +7,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
-using Wpf_DB.Repositories;
-using static Org.BouncyCastle.Asn1.Cmp.Challenge;
+using Wpf_Talk.Models;
+using Wpf_Talk.Repositories;
 
 namespace Wpf_Talk.ViewModels
 {
@@ -57,7 +57,7 @@ namespace Wpf_Talk.ViewModels
 			long id = -1;
 			try
 			{
-				id = _accountRepository.Insert(new Wpf_DB.Model.Account()
+				id = _accountRepository.Insert(new Account()
 				{
 					Email = Email,
 					Password = Password,
