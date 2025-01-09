@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.Common;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -63,8 +64,20 @@ namespace Wpf_DB.Database
 
         public void Dispose()
         {
-            _connection?.Dispose();
-            _connection = null;
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                if (_connection != null)
+                {
+                    _connection.Dispose();
+                    _connection = null;
+                }
+            }
         }
     }
 }
