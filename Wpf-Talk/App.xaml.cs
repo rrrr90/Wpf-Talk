@@ -53,15 +53,19 @@ namespace Wpf_Talk
             // Services
             services.AddSingleton<INavigationService, NavigationService>();
             services.AddTransient<IAccountRepository, AccountRepository>();
+            services.AddSingleton<IViewService, ViewService>();
 
             // Views
             services.AddSingleton<LoginView>();
+            services.AddSingleton<MainView>();
 
             // ViewModels
             services.AddTransient<LoginViewModel>();
             services.AddTransient<SignInViewModel>();
             services.AddTransient<SignUpViewModel>();
             services.AddTransient<ChangePwdViewModel>();
+
+            services.AddSingleton<MainViewModel>();
 
             return services.BuildServiceProvider();
         }

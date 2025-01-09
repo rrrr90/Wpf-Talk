@@ -10,10 +10,11 @@ using System.Windows.Input;
 using CommunityToolkit.Mvvm.Input;
 using Wpf_Talk.Stores;
 using Wpf_Talk.Services;
+using Wpf_Talk.ViewModels.Bases;
 
 namespace Wpf_Talk.ViewModels
 {
-    internal partial class LoginViewModel : ObservableObject
+    internal partial class LoginViewModel : ViewModelBase
     {
         private INotifyPropertyChanged? _currentViewModel;
         private readonly LoginNavigationStore _loginNavigationStore;
