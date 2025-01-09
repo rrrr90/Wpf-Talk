@@ -12,15 +12,15 @@ namespace Wpf_Talk.Services
 {
     internal class NavigationService : INavigationService
     {
-        private readonly MainNavigationStore _mainNavigationStore;
+        private readonly LoginNavigationStore _loginNavigationStore;
         private INotifyPropertyChanged CurrentViewModel
         {
-            set=> _mainNavigationStore.CurrentViewModel = value;
+            set=> _loginNavigationStore.CurrentViewModel = value;
         }
 
-        public NavigationService(MainNavigationStore mainNavigationStore)
+        public NavigationService(LoginNavigationStore mainNavigationStore)
         {
-            this._mainNavigationStore = mainNavigationStore;
+            this._loginNavigationStore = mainNavigationStore;
         }
 
         public void Navigate(NavType navType)
