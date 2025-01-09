@@ -48,8 +48,10 @@ namespace Wpf_Talk.ViewModels
 		}
 
         public ICommand SignUpCommand => new RelayCommand<object>(RequestSignUp);
+        public ICommand ToSignInCommand => new RelayCommand(ToSignIn);
 
-		private void RequestSignUp(object? _)
+
+        private void RequestSignUp(object? _)
 		{
 			if (Password != PasswordR)
 			{
@@ -75,6 +77,11 @@ namespace Wpf_Talk.ViewModels
 				_navigationService.Navigate(NavType.SignInView);
 			}
 		}
+
+        private void ToSignIn()
+        {
+            _navigationService.Navigate(NavType.SignInView);
+        }
 
         private string GetRandomChar(int count = 1)
         {
