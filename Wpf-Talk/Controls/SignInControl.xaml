@@ -35,17 +35,20 @@
         <StackPanel Grid.Row="1"
                     Margin="30 10">
             <controls:TextBoxControl Background="White"
+                                     Text="{Binding Email}"
                                      Height="35"
                                      VerticalAlignment="Center"
                                      WaterMarkText="이메일을 입력하세요."
                                      WaterMarkTextColor="Red"
                                      Validating="False"/>
             <controls:PasswordBoxControl Background="White"
+                                         Password="{Binding Password}"
                                          WaterMarkText="비밀번호를 입력하세요."
                                          WaterMarkTextColor="Red"
                                          Height="{StaticResource ElementHeight}"/>
             <Button Content="로그인"
                     Height="{StaticResource ElementHeight}"
+                    Command="{Binding SignInCommand}"
                     Margin="0 10 0 0"/>
             <Grid Height="{StaticResource ElementHeight}">
                 <Grid.ColumnDefinitions>
