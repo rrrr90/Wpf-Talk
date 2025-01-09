@@ -78,5 +78,24 @@ namespace Wpf_Talk.Repositories
             }
             return list.ToArray();
         }
+
+        public int GetUid(Account account)
+        {
+            string query =
+                "select id from account" +
+                " where email=@email" +
+                " and pwd=@pwd";
+            using MySqlDB db = GetMySqlDB();
+            DataTable table = db.GetDataTable(query, new SqlParameter[]
+            {
+                new SqlParameter(parameterName: "@email", value:account.Email),
+                new SqlParameter(parameterName: "@pwd", value:account.Password)
+            });
+            foreach(DataRow row in table.Rows)
+            {
+                return (int)row["id"];
+            }
+            return -1;
+        }
     }
 }

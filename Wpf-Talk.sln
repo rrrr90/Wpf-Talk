@@ -7,7 +7,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wpf-Talk", "Wpf-Talk\Wpf-Ta
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wpf-Lib", "Wpf-Lib\Wpf-Lib.csproj", "{547F5418-DE88-45B3-B6E8-8F3385FD7D93}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wpf-DB", "Wpf-DB\Wpf-DB.csproj", "{6211F913-6334-4D18-9913-1A9C7ED86DBA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wpf-DB", "Wpf-DB\Wpf-DB.csproj", "{6211F913-6334-4D18-9913-1A9C7ED86DBA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{BBAB404B-8010-4C2D-AEC8-7A97E1730D03}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

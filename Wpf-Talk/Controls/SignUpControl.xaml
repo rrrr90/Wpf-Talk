@@ -92,7 +92,7 @@
                     Content="로그인 화면으로"
                     Style="{StaticResource BottomButton}"
                     FontSize="{StaticResource FontSmall}"
-                    Command="{Binding ####}"/>
+                    Command="{Binding ToSignInCommand}"/>
         </Grid>
 
     </Grid>
