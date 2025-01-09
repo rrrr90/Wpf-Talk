@@ -24,8 +24,8 @@ namespace Wpf_Talk
 
         private void App_Startup(object sender, StartupEventArgs e)
         {
-            var mainWindow = Services.GetService<MainView>();
-            var mainViewModel = Services.GetService<MainViewModel>();
+            var mainWindow = Services.GetService<LoginView>();
+            var mainViewModel = Services.GetService<LoginViewModel>();
             mainWindow.DataContext = mainViewModel;
             MainWindow.Show();
         }
@@ -48,17 +48,17 @@ namespace Wpf_Talk
             var services = new ServiceCollection();
 
             // Stores
-            services.AddSingleton<MainNavigationStore>();
+            services.AddSingleton<LoginNavigationStore>();
 
             // Services
             services.AddSingleton<INavigationService, NavigationService>();
             services.AddTransient<IAccountRepository, AccountRepository>();
 
             // Views
-            services.AddSingleton<MainView>();
+            services.AddSingleton<LoginView>();
 
             // ViewModels
-            services.AddTransient<MainViewModel>();
+            services.AddTransient<LoginViewModel>();
             services.AddTransient<SignInViewModel>();
             services.AddTransient<SignUpViewModel>();
             services.AddTransient<ChangePwdViewModel>();

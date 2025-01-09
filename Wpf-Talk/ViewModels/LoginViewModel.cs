@@ -13,10 +13,10 @@ using Wpf_Talk.Services;
 
 namespace Wpf_Talk.ViewModels
 {
-    internal partial class MainViewModel : ObservableObject
+    internal partial class LoginViewModel : ObservableObject
     {
         private INotifyPropertyChanged? _currentViewModel;
-        private readonly MainNavigationStore _mainNavigationStore;
+        private readonly LoginNavigationStore _loginNavigationStore;
 
         public INotifyPropertyChanged? CurrentViewModel
         {
@@ -29,16 +29,16 @@ namespace Wpf_Talk.ViewModels
             }
         }
 
-        public MainViewModel(MainNavigationStore mainNavigationStore, INavigationService navigationService)
+        public LoginViewModel(LoginNavigationStore loginNavigationStore, INavigationService navigationService)
         {
-            _mainNavigationStore = mainNavigationStore;
-            _mainNavigationStore.CurrentViewModelChanged += CurrentViewModelChanged;
+            _loginNavigationStore = loginNavigationStore;
+            _loginNavigationStore.CurrentViewModelChanged += CurrentViewModelChanged;
             navigationService.Navigate(NavType.SignInView);
         }
 
         private void CurrentViewModelChanged()
         {
-            CurrentViewModel = _mainNavigationStore.CurrentViewModel;
+            CurrentViewModel = _loginNavigationStore.CurrentViewModel;
         }
 
         public ICommand ToSignUpCommand => new RelayCommand(ToSignUp);
