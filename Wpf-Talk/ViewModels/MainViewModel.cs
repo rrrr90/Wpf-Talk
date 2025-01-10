@@ -16,7 +16,7 @@ namespace Wpf_Talk.ViewModels
 
         public MainViewModel()
         {
-            
+            //https://rhkdrmfh.tistory.com/139
         }
 
         public void ReceiveParameter(object parameter)
