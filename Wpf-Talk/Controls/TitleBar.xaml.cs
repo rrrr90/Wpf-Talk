@@ -31,7 +31,7 @@ namespace Wpf_Talk.Controls
             set { SetProperty(ref _winState, value); }
         }
 
-        private Window _parentWindow;
+        private Window? _parentWindow;
 
         public Window ParentWindow
         {
