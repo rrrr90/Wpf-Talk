@@ -10,13 +10,14 @@ using System.Windows.Input;
 using CommunityToolkit.Mvvm.Input;
 using Wpf_Talk.Stores;
 using Wpf_Talk.Services;
+using Wpf_Talk.ViewModels.Bases;
 
 namespace Wpf_Talk.ViewModels
 {
-    internal partial class LoginViewModel : ObservableObject
+    internal partial class LoginViewModel : ViewModelBase
     {
         private INotifyPropertyChanged? _currentViewModel;
-        private readonly LoginNavigationStore _loginNavigationStore;
+        private readonly NavigationStore _loginNavigationStore;
 
         public INotifyPropertyChanged? CurrentViewModel
         {
@@ -29,33 +30,16 @@ namespace Wpf_Talk.ViewModels
             }
         }
 
-        public LoginViewModel(LoginNavigationStore loginNavigationStore, INavigationService navigationService)
+        public LoginViewModel(NavigationStore loginNavigationStore, INavigationService navigationService)
         {
             _loginNavigationStore = loginNavigationStore;
             _loginNavigationStore.CurrentViewModelChanged += CurrentViewModelChanged;
-            navigationService.Navigate(NavType.SignInView);
+            navigationService.Navigate(LoginNavType.SignInView);
         }
 
         private void CurrentViewModelChanged()
         {
             CurrentViewModel = _loginNavigationStore.CurrentViewModel;
-        }
-
-        public ICommand ToSignUpCommand => new RelayCommand(ToSignUp);
-        public ICommand ToSignInCommand => new RelayCommand(ToSignIn);
-        public ICommand ToChangePwdCommand => new RelayCommand(ToChangePwd);
-
-        private void ToSignUp()
-        {
-            CurrentViewModel = App.Current.Services.GetService<SignUpViewModel>()!;
-        }
-        private void ToSignIn()
-        {
-            CurrentViewModel = App.Current.Services.GetService<SignInViewModel>()!;
-        }
-        private void ToChangePwd()
-        {
-            CurrentViewModel = App.Current.Services.GetService<ChangePwdViewModel>()!;
         }
     }
 }

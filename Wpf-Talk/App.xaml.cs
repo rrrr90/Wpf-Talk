@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using Microsoft.Extensions.DependencyInjection;
 using System.Configuration;
 using System.Data;
 using System.Windows;
@@ -24,10 +25,13 @@ namespace Wpf_Talk
 
         private void App_Startup(object sender, StartupEventArgs e)
         {
-            var mainWindow = Services.GetService<LoginView>();
-            var mainViewModel = Services.GetService<LoginViewModel>();
-            mainWindow.DataContext = mainViewModel;
-            MainWindow.Show();
+            //var view = Services.GetService<LoginView>();
+            //var viewModel = Services.GetService<LoginViewModel>();
+            //view.DataContext = viewModel;
+            //view.Show();
+
+            Services.GetService<IViewService>()?.ShowView<MainView, MainViewModel>(7);
+            //Services.GetService<IViewService>()?.ShowView<LoginView, LoginViewModel>();
         }
 
         /// <summary>
@@ -48,20 +52,27 @@ namespace Wpf_Talk
             var services = new ServiceCollection();
 
             // Stores
-            services.AddSingleton<LoginNavigationStore>();
+            services.AddSingleton<NavigationStore>();
 
             // Services
             services.AddSingleton<INavigationService, NavigationService>();
             services.AddTransient<IAccountRepository, AccountRepository>();
+            services.AddSingleton<IViewService, ViewService>();
 
             // Views
             services.AddSingleton<LoginView>();
+            services.AddSingleton<MainView>();
 
             // ViewModels
             services.AddTransient<LoginViewModel>();
             services.AddTransient<SignInViewModel>();
             services.AddTransient<SignUpViewModel>();
             services.AddTransient<ChangePwdViewModel>();
+
+            services.AddSingleton<MainViewModel>();
+            services.AddTransient<FriendViewModel>();
+            services.AddTransient<ChattingViewModel>();
+            services.AddTransient<MoreViewModel>();
 
             return services.BuildServiceProvider();
         }

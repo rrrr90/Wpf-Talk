@@ -10,6 +10,15 @@
     <Compile Update="Controls\ChangePwdControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Controls\ChattingControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Controls\FriendControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Controls\MoreControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Controls\SignInControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -22,9 +31,21 @@
     <Compile Update="Views\LoginView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\MainView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="Controls\ChangePwdControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Controls\ChattingControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Controls\FriendControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Controls\MoreControl.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Controls\SignInControl.xaml">
@@ -49,6 +70,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\LoginView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\MainView.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

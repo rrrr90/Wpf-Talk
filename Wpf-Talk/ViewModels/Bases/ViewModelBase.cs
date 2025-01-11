@@ -4,12 +4,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.Extensions.DependencyInjection;
-using Wpf_Talk.ViewModels.Bases;
 
-namespace Wpf_Talk.ViewModels
+namespace Wpf_Talk.ViewModels.Bases
 {
-    internal class ChangePwdViewModel : ViewModelBase
+    internal class ViewModelBase : ObservableObject
     {
     }
 }

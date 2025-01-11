@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Wpf_Talk.Services
 {
-    internal interface INavigationService
+    public enum MainNavType
     {
-        void Navigate(Enum navType);
+        FriendView, ChattingView, MoreView
     }
 }

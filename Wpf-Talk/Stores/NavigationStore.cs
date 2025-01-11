@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Wpf_Talk.Stores
 {
-	internal class LoginNavigationStore : ObservableObject
+	internal class NavigationStore : ObservableObject
 	{
 		private INotifyPropertyChanged? _currentViewModel;
 

@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Wpf_Talk.ViewModels.Bases;
 
-namespace Wpf_Talk.Services
+namespace Wpf_Talk.ViewModels
 {
-    public enum NavType
+    internal class ChattingViewModel : ViewModelBase
     {
-        SignInView, SignUpView, ChangePwdView
+
     }
 }

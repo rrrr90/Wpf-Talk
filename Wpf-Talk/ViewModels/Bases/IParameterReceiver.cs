@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Wpf_Talk.Services
+namespace Wpf_Talk.ViewModels.Bases
 {
-    internal interface INavigationService
+    internal interface IParameterReceiver
     {
-        void Navigate(Enum navType);
+        void ReceiveParameter(object parameter);
     }
 }

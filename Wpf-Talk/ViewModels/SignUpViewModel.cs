@@ -10,10 +10,11 @@ using System.Windows.Input;
 using Wpf_Talk.Models;
 using Wpf_Talk.Repositories;
 using Wpf_Talk.Services;
+using Wpf_Talk.ViewModels.Bases;
 
 namespace Wpf_Talk.ViewModels
 {
-    internal class SignUpViewModel : ObservableObject
+    internal class SignUpViewModel : ViewModelBase
     {
         private readonly INavigationService _navigationService;
         private readonly IAccountRepository _accountRepository;
@@ -74,13 +75,13 @@ namespace Wpf_Talk.ViewModels
 			if(id >= 0)
 			{
 				MessageBox.Show("OK");
-				_navigationService.Navigate(NavType.SignInView);
+				_navigationService.Navigate(LoginNavType.SignInView);
 			}
 		}
 
         private void ToSignIn()
         {
-            _navigationService.Navigate(NavType.SignInView);
+            _navigationService.Navigate(LoginNavType.SignInView);
         }
 
         private string GetRandomChar(int count = 1)

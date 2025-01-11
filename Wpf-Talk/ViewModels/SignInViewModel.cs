@@ -11,23 +11,26 @@ using System.Windows.Input;
 using Wpf_Talk.Models;
 using Wpf_Talk.Repositories;
 using Wpf_Talk.Services;
+using Wpf_Talk.ViewModels.Bases;
+using Wpf_Talk.Views;
 
 namespace Wpf_Talk.ViewModels
 {
-    internal class SignInViewModel : ObservableObject
+    internal class SignInViewModel : ViewModelBase
     {
         private readonly INavigationService _navigationService;
         private readonly IAccountRepository _accountRepository;
-
+        private readonly IViewService _viewService;
         private string _email = string.Empty;
         private string _password = string.Empty;
         public string Email { get => _email; set { SetProperty(ref _email, value); } }
         public string Password { get => _password; set { SetProperty(ref _password, value); } }
 
-        public SignInViewModel(INavigationService navigationService, IAccountRepository accountRepository)
+        public SignInViewModel(INavigationService navigationService, IAccountRepository accountRepository, IViewService viewService)
         {
             this._navigationService = navigationService;
             this._accountRepository = accountRepository;
+            this._viewService = viewService;
         }
 
         public ICommand SignInCommand => new RelayCommand<object>(SignIn);
@@ -36,21 +39,32 @@ namespace Wpf_Talk.ViewModels
 
         private void SignIn(object? _)
         {
-            long uid = _accountRepository.GetUid(new Account()
+            int uid = _accountRepository.GetUid(new Account()
             {
                 Email = Email,
                 Password = Password
             });
-            MessageBox.Show(uid.ToString());
-
+            if (uid >= 0)
+            {
+                ToMainView(uid);
+                App.Current.Services.GetService<LoginView>()!.Close();
+            }
+            else
+            {
+                MessageBox.Show("Incorrect password.");
+            }
         }
         private void ToSignUp()
         {
-            _navigationService.Navigate(NavType.SignUpView);
+            _navigationService.Navigate(LoginNavType.SignUpView);
         }
         private void ToChangePwd()
         {
-            _navigationService.Navigate(NavType.ChangePwdView);
+            _navigationService.Navigate(LoginNavType.ChangePwdView);
+        }
+        private void ToMainView(int uid)
+        {
+            _viewService.ShowView<MainView, MainViewModel>(uid);
         }
     }
 }
