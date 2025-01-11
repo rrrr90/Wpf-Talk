@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Wpf_Talk.Services
 {
-    internal interface INavigationService
+    public enum LoginNavType
     {
-        void Navigate(Enum navType);
+        SignInView, SignUpView, ChangePwdView
     }
 }

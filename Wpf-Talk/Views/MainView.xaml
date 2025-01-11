@@ -3,10 +3,22 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Wpf_Talk.Views" xmlns:fa6="http://schemas.fontawesome.com/icons/svg"
+        xmlns:local="clr-namespace:Wpf_Talk.Views"
+        xmlns:controls="clr-namespace:Wpf_Talk.Controls"
+        xmlns:viewmodels="clr-namespace:Wpf_Talk.ViewModels"
+        xmlns:fa6="http://schemas.fontawesome.com/icons/svg"
         mc:Ignorable="d"
         Title="MainView" Height="550" Width="350">
     <Window.Resources>
+        <DataTemplate DataType="{x:Type viewmodels:FriendViewModel}">
+            <controls:FriendControl/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewmodels:ChattingViewModel}">
+            <controls:ChattingControl/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewmodels:MoreViewModel}">
+            <controls:MoreControl/>
+        </DataTemplate>
         <Style x:Key="LeftButton" TargetType="{x:Type Button}">
             <Setter Property="Width" Value="42"/>
             <Setter Property="Height" Value="42"/>
@@ -22,21 +34,26 @@
         </Grid.ColumnDefinitions>
         <StackPanel Grid.Column="0"
                     Orientation="Vertical">
-            <Button Style="{StaticResource LeftButton}">
+            <Button Style="{StaticResource LeftButton}"
+                    Command="{Binding ToFriendViewCommand}">
                 <Grid>
                     <fa6:SvgAwesome Icon="Regular_User"/>
                 </Grid>
             </Button>
-            <Button Style="{StaticResource LeftButton}">
+            <Button Style="{StaticResource LeftButton}"
+                    Command="{Binding ToChattingViewCommand}">
                 <Grid>
                     <fa6:SvgAwesome Icon="Solid_CommentDots"/>
                 </Grid>
             </Button>
-            <Button Style="{StaticResource LeftButton}">
+            <Button Style="{StaticResource LeftButton}"
+                    Command="{Binding ToMoreViewCommand}">
                 <Grid>
                     <fa6:SvgAwesome Icon="Solid_Ellipsis"/>
                 </Grid>
             </Button>
         </StackPanel>
+        <ContentControl Grid.Column="1"
+                        Content="{Binding CurrentViewModel}"/>
     </Grid>
 </Window>

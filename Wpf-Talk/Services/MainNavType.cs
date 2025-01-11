@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Wpf_Talk.Services
 {
-    public enum NavType
+    public enum MainNavType
     {
-        SignInView, SignUpView, ChangePwdView
+        FriendView, ChattingView, MoreView
     }
 }

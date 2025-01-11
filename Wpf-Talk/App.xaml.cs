@@ -31,6 +31,7 @@ namespace Wpf_Talk
             //view.Show();
 
             Services.GetService<IViewService>()?.ShowView<MainView, MainViewModel>(7);
+            //Services.GetService<IViewService>()?.ShowView<LoginView, LoginViewModel>();
         }
 
         /// <summary>
@@ -51,7 +52,7 @@ namespace Wpf_Talk
             var services = new ServiceCollection();
 
             // Stores
-            services.AddSingleton<LoginNavigationStore>();
+            services.AddSingleton<NavigationStore>();
 
             // Services
             services.AddSingleton<INavigationService, NavigationService>();

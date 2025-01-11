@@ -56,11 +56,11 @@ namespace Wpf_Talk.ViewModels
         }
         private void ToSignUp()
         {
-            _navigationService.Navigate(NavType.SignUpView);
+            _navigationService.Navigate(LoginNavType.SignUpView);
         }
         private void ToChangePwd()
         {
-            _navigationService.Navigate(NavType.ChangePwdView);
+            _navigationService.Navigate(LoginNavType.ChangePwdView);
         }
         private void ToMainView(int uid)
         {

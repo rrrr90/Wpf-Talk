@@ -75,13 +75,13 @@ namespace Wpf_Talk.ViewModels
 			if(id >= 0)
 			{
 				MessageBox.Show("OK");
-				_navigationService.Navigate(NavType.SignInView);
+				_navigationService.Navigate(LoginNavType.SignInView);
 			}
 		}
 
         private void ToSignIn()
         {
-            _navigationService.Navigate(NavType.SignInView);
+            _navigationService.Navigate(LoginNavType.SignInView);
         }
 
         private string GetRandomChar(int count = 1)

@@ -12,29 +12,38 @@ namespace Wpf_Talk.Services
 {
     internal class NavigationService : INavigationService
     {
-        private readonly LoginNavigationStore _loginNavigationStore;
+        private readonly NavigationStore _navigationStore;
         private INotifyPropertyChanged CurrentViewModel
         {
-            set=> _loginNavigationStore.CurrentViewModel = value;
+            set=> _navigationStore.CurrentViewModel = value;
         }
 
-        public NavigationService(LoginNavigationStore mainNavigationStore)
+        public NavigationService(NavigationStore navigationStore)
         {
-            this._loginNavigationStore = mainNavigationStore;
+            this._navigationStore = navigationStore;
         }
 
-        public void Navigate(NavType navType)
+        public void Navigate(Enum navType)
         {
             switch (navType)
             {
-                case NavType.SignUpView:
+                case LoginNavType.SignUpView:
                     CurrentViewModel = App.Current.Services.GetService<SignUpViewModel>()!;
                     break;
-                case NavType.SignInView:
+                case LoginNavType.SignInView:
                     CurrentViewModel = App.Current.Services.GetService<SignInViewModel>()!;
                     break;
-                case NavType.ChangePwdView:
+                case LoginNavType.ChangePwdView:
                     CurrentViewModel = App.Current.Services.GetService<ChangePwdViewModel>()!;
+                    break;
+                case MainNavType.FriendView:
+                    CurrentViewModel = App.Current.Services.GetService<FriendViewModel>()!;
+                    break;
+                case MainNavType.ChattingView:
+                    CurrentViewModel = App.Current.Services.GetService<ChattingViewModel>()!;
+                    break;
+                case MainNavType.MoreView:
+                    CurrentViewModel = App.Current.Services.GetService<MoreViewModel>()!;
                     break;
                 default:
                     return;
