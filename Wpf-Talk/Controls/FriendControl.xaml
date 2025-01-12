@@ -6,7 +6,26 @@
              xmlns:local="clr-namespace:Wpf_Talk.Controls"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="300">
-    <Grid Background="Green">
-            
+    <Grid Margin="4">
+        <ListBox x:Name="friendListBox" HorizontalAlignment="Stretch"
+                 ItemsSource="{Binding Friends}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid Height="50">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="50"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Image Grid.Column="0"
+                               Source="{Binding Source}"
+                               Width="46" Height="46"/>
+                        <TextBlock Grid.Column="1"
+                                   Text="{Binding Text}"
+                                   FontSize="14"
+                                   VerticalAlignment="Center"/>
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
     </Grid>
 </UserControl>

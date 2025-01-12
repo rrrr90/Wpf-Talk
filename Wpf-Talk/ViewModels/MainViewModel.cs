@@ -36,7 +36,6 @@ namespace Wpf_Talk.ViewModels
 
         public MainViewModel(INavigationService navigationService, NavigationStore navigationStore)
         {
-            //https://rhkdrmfh.tistory.com/139
             this._navigationService = navigationService;
             this._navigationStore = navigationStore;
             _navigationStore.CurrentViewModelChanged += CurrentViewModelChanged;
