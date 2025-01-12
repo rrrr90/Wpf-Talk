@@ -36,7 +36,6 @@ namespace Wpf_Talk.ViewModels
 
         public MainViewModel(INavigationService navigationService, NavigationStore navigationStore)
         {
-            //https://rhkdrmfh.tistory.com/139
             this._navigationService = navigationService;
             this._navigationStore = navigationStore;
             _navigationStore.CurrentViewModelChanged += CurrentViewModelChanged;
@@ -46,6 +45,7 @@ namespace Wpf_Talk.ViewModels
         private void CurrentViewModelChanged()
         {
             CurrentViewModel = _navigationStore.CurrentViewModel;
+            SendMyId();
         }
 
         public void ReceiveParameter(object parameter)
@@ -53,10 +53,19 @@ namespace Wpf_Talk.ViewModels
             if (parameter is int id)
             {
                 _myUid = id;
+                SendMyId();
             }
-                else
+            else
             {
                 throw new Exception("UID");
+            }
+        }
+
+        public void SendMyId()
+        {
+            if (CurrentViewModel is IParameterReceiver receiver)
+            {
+                receiver.ReceiveParameter(MyUid);
             }
         }
 

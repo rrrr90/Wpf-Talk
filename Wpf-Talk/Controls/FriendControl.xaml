@@ -6,7 +6,56 @@
              xmlns:local="clr-namespace:Wpf_Talk.Controls"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="300">
-    <Grid Background="Green">
-            
+    <Grid Margin="4">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <TextBlock Margin="8 0 0 0"
+                       Text="친구"
+                       FontSize="24"
+                       FontWeight="Bold"/>
+        </Grid>
+
+        <Grid Grid.Row="1" Margin="8 0 0 0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="46"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Image Grid.Column="0"
+                   Source="{Binding Source}"
+                   Width="46" Height="46"/>
+            <TextBlock Grid.Column="1"
+                       Text="{Binding MyAccount.Nickname}"
+                       FontSize="14"
+                       VerticalAlignment="Center"/>
+        </Grid>
+
+        <ListBox x:Name="friendListBox"
+                 Grid.Row="2"
+                 HorizontalAlignment="Stretch"
+                 ItemsSource="{Binding Friends}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid Height="50">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="50"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Image Grid.Column="0"
+                               Source="{Binding Source}"
+                               Width="46" Height="46"/>
+                        <TextBlock Grid.Column="1"
+                                   Text="{Binding Text}"
+                                   FontSize="14"
+                                   VerticalAlignment="Center"/>
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
     </Grid>
 </UserControl>
