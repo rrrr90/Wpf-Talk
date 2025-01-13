@@ -57,6 +57,7 @@ namespace Wpf_Talk
             // Services
             services.AddSingleton<INavigationService, NavigationService>();
             services.AddTransient<IAccountRepository, AccountRepository>();
+            services.AddTransient<IChattingRepository, ChattingRepository>();
             services.AddSingleton<IViewService, ViewService>();
 
             // Views
