@@ -45,11 +45,11 @@
                                    VerticalAlignment="Center"/>
                         <TextBlock Grid.Row="1" Grid.Column="1"
                                    Text="{Binding Message}"
-                                   FontSize="10"
+                                   FontSize="12"
                                    VerticalAlignment="Center"/>
                         <TextBlock Grid.Row="0" Grid.Column="2"
                                    Text="{Binding LastTime}"
-                                   FontSize="8"
+                                   FontSize="10"
                                    VerticalAlignment="Center"/>
                     </Grid>
                 </DataTemplate>

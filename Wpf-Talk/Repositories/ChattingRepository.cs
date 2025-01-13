@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Xaml.Behaviors.Media;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -30,13 +31,15 @@ namespace Wpf_Talk.Repositories
                 });
                 if(table.Rows.Count > 0)
                 {
+                    string message = (string)table.Rows[0]["message"];
+                    message = message.Length > 30 ? message[..27].Trim() + " ..." : message;
                     DateTime sendDate = (DateTime)table.Rows[0]["send_date"];
                     string lasttime = sendDate.ToLongDateString() == DateTime.Now.ToLongDateString()
                         ? sendDate.ToShortTimeString() : sendDate.ToShortDateString();
                     chattings.Add(new ChattingListItem()
                     {
                         Name = Array.Find(accounts, x => x.ID == opUid)?.Nickname ?? "null",
-                        Message = (string)table.Rows[0]["message"],
+                        Message = message,
                         LastTime = lasttime
                     });
                 }

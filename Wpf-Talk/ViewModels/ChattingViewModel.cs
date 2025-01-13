@@ -29,11 +29,7 @@ namespace Wpf_Talk.ViewModels
 
         private void LoadChattingList()
         {
-            //Chattings = _chattingRepository.GetLastChattings(_myUid);
-            Chattings = new ChattingListItem[]
-            {
-                new ChattingListItem() {Name = "name", Message="message", LastTime=DateTime.Now.ToShortTimeString()}
-            };
+            Chattings = _chattingRepository.GetLastChattings(_myUid);
         }
 
         public void ReceiveParameter(object parameter)
