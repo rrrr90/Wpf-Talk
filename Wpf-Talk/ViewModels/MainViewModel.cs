@@ -63,10 +63,7 @@ namespace Wpf_Talk.ViewModels
 
         public void SendMyId()
         {
-            if (CurrentViewModel is IParameterReceiver receiver)
-            {
-                receiver.ReceiveParameter(MyUid);
-            }
+            (CurrentViewModel as IParameterReceiver)?.ReceiveParameter(MyUid);
         }
 
         public ICommand ToFriendViewCommand => new RelayCommand(ToFriendView);
