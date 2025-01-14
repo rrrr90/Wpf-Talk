@@ -1,8 +1,11 @@
-﻿using System;
+﻿using CommunityToolkit.Mvvm.Input;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Input;
 using Wpf_Talk.Models;
 using Wpf_Talk.Repositories;
 using Wpf_Talk.ViewModels.Bases;
@@ -38,6 +41,10 @@ namespace Wpf_Talk.ViewModels
             LoadChattingList();
         }
 
-
+        public ICommand OpenChatRoomCommand => new RelayCommand<object?>(OpenChatRoom);
+        private void OpenChatRoom(object? obj)
+        {
+            MessageBox.Show("OPEN");
+        }
     }
 }
