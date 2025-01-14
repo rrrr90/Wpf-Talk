@@ -8,5 +8,6 @@
         void Delete(int id);
         Models.Account[] GetAll();
         int GetUid(Models.Account account);
+        Models.Account? GetAccount(int uid);
     }
 }

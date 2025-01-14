@@ -14,7 +14,7 @@
 
         <Grid Grid.Row="0">
             <TextBlock Margin="8 0 0 0"
-                       Text="친구"
+                       Text="채팅"
                        FontSize="24"
                        FontWeight="Bold"/>
         </Grid>
