@@ -67,14 +67,7 @@ namespace Wpf_Talk.Repositories
             List<Account> list = new List<Account>();
             foreach(DataRow row in table.Rows)
             {
-                list.Add(new Account()
-                {
-                    ID = (int)row["id"],
-                    Email = (string)row["email"],
-                    Password = (string)row["pwd"],
-                    Nickname = (string)row["nickname"],
-                    CellPhone = (string)row["cell_phone"]
-                });
+                list.Add(ConvertToAccount(row));
             }
             return list.ToArray();
         }
@@ -96,6 +89,32 @@ namespace Wpf_Talk.Repositories
                 return (int)row["id"];
             }
             return -1;
+        }
+
+        public Account? GetAccount(int uid)
+        {
+            string query =
+                "select * from account" +
+                " where id=@id";
+            using MySqlDB db = GetMySqlDB();
+            DataTable table = db.GetDataTable(query, new SqlParameter[]
+            {
+                new SqlParameter(parameterName: "@id", value: uid)
+            });
+            if (table.Rows.Count == 0) return null;
+            return ConvertToAccount(table.Rows[0]);
+        }
+
+        private Account ConvertToAccount(DataRow row)
+        {
+            return new Account()
+            {
+                ID = (int)row["id"],
+                Email = (string)row["email"],
+                Password = (string)row["pwd"],
+                Nickname = (string)row["nickname"],
+                CellPhone = (string)row["cell_phone"]
+            };
         }
     }
 }
