@@ -28,7 +28,8 @@
                     <Grid Height="50" Background="Transparent">
                         <Grid.InputBindings>
                             <MouseBinding Gesture="LeftDoubleClick"
-                                          Command="{Binding DataContext.OpenChatRoomCommand, RelativeSource={RelativeSource AncestorType={x:Type ListBox}}}"/>
+                                          Command="{Binding DataContext.OpenChatRoomCommand, RelativeSource={RelativeSource AncestorType={x:Type ListBox}}}"
+                                          CommandParameter="{Binding ElementName=chattingListBox, Path=SelectedIndex}"/>
                         </Grid.InputBindings>
 
                         <Grid.RowDefinitions>

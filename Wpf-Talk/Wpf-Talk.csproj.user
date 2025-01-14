@@ -28,7 +28,7 @@
     <Compile Update="Controls\TitleBar.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Views\ChattingView.xaml.cs">
+    <Compile Update="Views\ChatRoomView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Views\LoginView.xaml.cs">
@@ -72,7 +72,7 @@
     <Page Update="Styles\Fonts.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Views\ChattingView.xaml">
+    <Page Update="Views\ChatRoomView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\LoginView.xaml">

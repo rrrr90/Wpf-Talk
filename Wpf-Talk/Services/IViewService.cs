@@ -13,5 +13,6 @@ namespace Wpf_Talk.Services
         void ShowView<TView, TViewModel>(object? parms = null)
             where TView : Window
             where TViewModel : ObservableObject;
+        void ShowChatRoom(int my, int op);
     }
 }

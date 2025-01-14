@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace Wpf_Talk.Views
 {
     /// <summary>
-    /// ChattingView.xaml에 대한 상호 작용 논리
+    /// ChatRoomView.xaml에 대한 상호 작용 논리
     /// </summary>
-    public partial class ChattingView : Window
+    public partial class ChatRoomView : Window
     {
-        public ChattingView()
+        public ChatRoomView()
         {
             InitializeComponent();
         }
