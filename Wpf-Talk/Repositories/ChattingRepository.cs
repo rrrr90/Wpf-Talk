@@ -49,13 +49,42 @@ namespace Wpf_Talk.Repositories
             return chattings.ToArray();
         }
 
+        public ChattingItem[] GetChattings(int myUid, int opUid)
+        {
+            string query =
+                "select * from chatting" +
+                " where sender=@id1 and recver=@id2 or sender=@id2 and recver=@id1" +
+                " order by id asc";
+
+            using MySqlDB db = GetMySqlDB();
+            DataTable table = db.GetDataTable(query, new SqlParameter[]
+            {
+                new SqlParameter(parameterName: "@id1", value: myUid),
+                new SqlParameter(parameterName: "@id2", value: opUid)
+            });
+
+            List<ChattingItem> list = new List<ChattingItem>();
+            foreach(DataRow row in table.Rows)
+            {
+                list.Add(new ChattingItem()
+                {
+                    Sender = (int)row["sender"],
+                    Recver = (int)row["recver"],
+                    Message = (string)row["message"],
+                    SendDate = ((DateTime)row["send_date"]).ToShortTimeString()
+                });
+            }
+
+            return list.ToArray();
+        }
+
         private Account[] GetFriends(int myUid)
         {
-            string accountQuery = 
+            string query = 
                 "select * from account";
 
             using MySqlDB db = GetMySqlDB();
-            DataTable usersTable = db.GetDataTable(accountQuery);
+            DataTable usersTable = db.GetDataTable(query);
 
             List<Account> accounts = new List<Account>();
             foreach (DataRow row in usersTable.Rows)
