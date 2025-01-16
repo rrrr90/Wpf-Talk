@@ -71,7 +71,7 @@ namespace Wpf_Talk.Repositories
                     Sender = (int)row["sender"],
                     Recver = (int)row["recver"],
                     Message = (string)row["message"],
-                    SendDate = ((DateTime)row["send_date"]).ToShortTimeString()
+                    SendDate = ((DateTime)row["send_date"]).ToString()
                 });
             }
 

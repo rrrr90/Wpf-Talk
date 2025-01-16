@@ -11,6 +11,7 @@
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition Height="100"/>
+            <RowDefinition Height="30"/>
         </Grid.RowDefinitions>
         <ListBox x:Name="chattingListBox"
                  HorizontalContentAlignment="Stretch"
@@ -18,7 +19,7 @@
                  ScrollViewer.VerticalScrollBarVisibility="Disabled"
                  ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                  control:ListBoxBehavior.UseOnItemsAdded="True"
-                 ItemsSource="{Binding Chattings}">
+                 ItemsSource="{Binding Chattings, Mode=TwoWay}">
 
             <ListBox.ItemsPanel>
                 <ItemsPanelTemplate>
@@ -58,5 +59,20 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
+        <TextBox x:Name="messageTextBox"
+                 Grid.Row="1"
+                 Text="{Binding MyMessage, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                 Padding="4"
+                 Margin="4">
+            <TextBox.InputBindings>
+                <KeyBinding Command="{Binding MessageBoxEnterCommand}" Key="Enter"/>
+            </TextBox.InputBindings>
+        </TextBox>
+        <Button x:Name="sendButton"
+                Grid.Row="2"
+                HorizontalAlignment="Right"
+                Margin="0 0 4 4"
+                Width="40" Height="26"
+                Command="{Binding SendMessageCommand}"/>
     </Grid>
 </Window>

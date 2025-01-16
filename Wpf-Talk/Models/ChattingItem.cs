@@ -11,7 +11,19 @@ namespace Wpf_Talk.Models
         public int Sender { get; set; } = default;
         public int Recver { get; set; } = default;
         public string Message { get; set; } = string.Empty;
-        public string SendDate { get; set; } = string.Empty;
 
+        private DateTime _sendDate = DateTime.MinValue;
+        public string SendDate
+        {
+            get
+            {
+                if (_sendDate.ToShortDateString() == DateTime.Now.ToShortDateString()) return _sendDate.ToShortTimeString();
+                else return _sendDate.ToShortDateString();
+            }
+            set
+            {
+                _sendDate = DateTime.Parse(value);
+            }
+        }
     }
 }

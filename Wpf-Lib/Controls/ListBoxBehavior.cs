@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,9 +23,9 @@ namespace Wpf_Lib.Controls
 
         // Using a DependencyProperty as the backing store for UseOnItemsAdded.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty UseOnItemsAddedProperty =
-            DependencyProperty.RegisterAttached("UseOnItemsAdded", typeof(bool), typeof(ListBoxBehavior), new PropertyMetadata(false, onUseOnItemsAdded));
+            DependencyProperty.RegisterAttached("UseOnItemsAdded", typeof(bool), typeof(ListBoxBehavior), new PropertyMetadata(false, OnUseOnItemsAdded));
 
-        private static void onUseOnItemsAdded(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        private static void OnUseOnItemsAdded(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             if (d is not ListBox listbox) return;
 
@@ -33,6 +34,7 @@ namespace Wpf_Lib.Controls
             if ((bool)e.NewValue)
             {
                 listbox.Loaded += ListBox_Loaded;
+                //listbox.Items.
             }
             else
             {
@@ -40,9 +42,15 @@ namespace Wpf_Lib.Controls
             }
         }
 
+        static void MyEvent(ItemCollection items)
+        {
+
+        }
+
         static void ListBox_Loaded(object sender,  RoutedEventArgs e)
         {
             if (sender is not ListBox listbox) return;
+            if (listbox.Items.Count == 0) return;
             listbox?.ScrollIntoView(listbox.Items.GetItemAt(listbox.Items.Count - 1));
         }
     }
