@@ -44,7 +44,7 @@ namespace Wpf_Talk.Services
             else window.Activate();
         }
 
-        private bool ActivateWindow<TView>()
+        private static bool ActivateWindow<TView>()
             where TView : Window
         {
             var window = Application.Current.Windows.OfType<TView>();

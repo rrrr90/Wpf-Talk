@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -28,24 +29,30 @@ namespace Wpf_Lib.Controls
         private static void OnUseOnItemsAdded(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             if (d is not ListBox listbox) return;
-
+            parent = listbox;
+            
             if ((bool)e.NewValue == (bool)e.OldValue) return;
 
             if ((bool)e.NewValue)
             {
-                listbox.Loaded += ListBox_Loaded;
-                //listbox.Items.
+                //listbox.Loaded += ListBox_Loaded;
+                listbox.Items.CurrentChanged += Items_CurrentChanged;
             }
             else
             {
-                listbox.Loaded -= ListBox_Loaded;
+                //listbox.Loaded -= ListBox_Loaded;
+                listbox.Items.CurrentChanged -= Items_CurrentChanged;
             }
         }
 
-        static void MyEvent(ItemCollection items)
+        private static void Items_CurrentChanged(object? sender, EventArgs e)
         {
-
+            if (parent is null) return;
+            if (parent.Items.Count == 0) return;
+            parent?.ScrollIntoView(parent.Items.GetItemAt(parent.Items.Count - 1));
         }
+
+        private static ListBox? parent; // TODO
 
         static void ListBox_Loaded(object sender,  RoutedEventArgs e)
         {
