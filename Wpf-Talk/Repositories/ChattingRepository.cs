@@ -29,7 +29,7 @@ namespace Wpf_Talk.Repositories
                     new SqlParameter(parameterName: "@id1", myUid),
                     new SqlParameter(parameterName: "@id2", opUid)
                 });
-                if(table.Rows.Count > 0)
+                if (table.Rows.Count > 0)
                 {
                     string message = (string)table.Rows[0]["message"];
                     message = message.Length > 26 ? message[..24].Trim() + "..." : message;
@@ -64,7 +64,7 @@ namespace Wpf_Talk.Repositories
             });
 
             List<ChattingItem> list = new List<ChattingItem>();
-            foreach(DataRow row in table.Rows)
+            foreach (DataRow row in table.Rows)
             {
                 list.Add(new ChattingItem()
                 {
@@ -80,7 +80,7 @@ namespace Wpf_Talk.Repositories
 
         private Account[] GetFriends(int myUid)
         {
-            string query = 
+            string query =
                 "select * from account";
 
             using MySqlDB db = GetMySqlDB();
@@ -99,5 +99,22 @@ namespace Wpf_Talk.Repositories
             }
             return accounts.ToArray();
         }
-    }   
+
+
+        public bool SendMessage(int sender, int recver, string message)
+        {
+            string query =
+                "insert into chatting(sender, recver, message)" +
+                " values(@sender, @recver, @message)";
+
+            using MySqlDB db = GetMySqlDB();
+            long lastId = db.Execute(query, new SqlParameter[]
+            {
+                new SqlParameter(parameterName: "@sender", value: sender),
+                new SqlParameter(parameterName: "@recver", value: recver),
+                new SqlParameter(parameterName: "@message", value: message)
+            });
+            return lastId >= 0;
+        }
+    }
 }

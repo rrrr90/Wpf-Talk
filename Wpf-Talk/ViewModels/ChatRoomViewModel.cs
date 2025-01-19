@@ -54,6 +54,7 @@ namespace Wpf_Talk.ViewModels
         {
             if (string.IsNullOrEmpty(MyMessage)) return;
 
+            _chattingRepository.SendMessage(sender: MyUid, recver: OpUid, message: MyMessage);
 
             ChattingItem item = new ChattingItem()
             {
