@@ -11,5 +11,7 @@ namespace Wpf_Talk.Repositories
     {
         ChattingListItem[] GetLastChattings(int myUid); // SELECT * FROM TABLE ORDER BY ID DESC LIMIT 1
         ChattingItem[] GetChattings(int myUid, int opUid);
+        bool SendMessage(int sender, int recver, string message);
+
     }
 }
