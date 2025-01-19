@@ -1,11 +1,14 @@
-﻿using System;
+﻿using CommunityToolkit.Mvvm.Input;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Input;
 using Wpf_Talk.Models;
 using Wpf_Talk.Repositories;
+using Wpf_Talk.Services;
 using Wpf_Talk.ViewModels.Bases;
 
 namespace Wpf_Talk.ViewModels
@@ -20,10 +23,12 @@ namespace Wpf_Talk.ViewModels
         public string Source { get => "D:\\Picture\\인장주작은뭐야.jpg"; }
 
         private readonly IAccountRepository _accountRepository;
+        private readonly IViewService _viewService;
 
-        public FriendViewModel(IAccountRepository accountRepository)
+        public FriendViewModel(IAccountRepository accountRepository, IViewService viewService)
         {
             this._accountRepository = accountRepository;
+            this._viewService = viewService;
             //LoadFriendList();
         }
 
@@ -46,6 +51,13 @@ namespace Wpf_Talk.ViewModels
                 MyAccount = Array.Find(_accountRepository.GetAll(), element => element.ID == myUid);
             }
             LoadFriendList();
+        }
+
+        public ICommand OpenChatRoomCommand => new RelayCommand<object?>(OpenChatRoom);
+        private void OpenChatRoom(object? obj)
+        {
+            if (obj is not int opuid) return;
+            _viewService.ShowChatRoom(MyAccount!.ID, opuid);
         }
     }
 }

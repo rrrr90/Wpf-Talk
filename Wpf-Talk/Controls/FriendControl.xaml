@@ -37,11 +37,16 @@
 
         <ListBox x:Name="friendListBox"
                  Grid.Row="2"
-                 HorizontalAlignment="Stretch"
+                 HorizontalContentAlignment="Stretch"
                  ItemsSource="{Binding Friends}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <Grid Height="50">
+                    <Grid Height="50" Background="Transparent">
+                        <Grid.InputBindings>
+                            <MouseBinding Gesture="LeftDoubleClick"
+                                          Command="{Binding DataContext.OpenChatRoomCommand, RelativeSource={RelativeSource AncestorType={x:Type ListBox}}}"
+                                          CommandParameter="{Binding ElementName=friendListBox, Path=SelectedIndex}"/>
+                        </Grid.InputBindings>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="50"/>
                             <ColumnDefinition/>

@@ -12,5 +12,5 @@ namespace Wpf_Talk.Models
         public string Name { get; set; } = string.Empty;
         public string Message { get; set; } = string.Empty;
         public string LastTime { get; set; } = string.Empty;
-    }
+     }
 }

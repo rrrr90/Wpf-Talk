@@ -63,6 +63,7 @@ namespace Wpf_Talk
             // Views
             services.AddSingleton<LoginView>();
             services.AddSingleton<MainView>();
+            services.AddTransient<ChatRoomView>();
 
             // ViewModels
             services.AddTransient<LoginViewModel>();
@@ -74,6 +75,8 @@ namespace Wpf_Talk
             services.AddTransient<FriendViewModel>();
             services.AddTransient<ChattingViewModel>();
             services.AddTransient<MoreViewModel>();
+
+            services.AddTransient<ChatRoomViewModel>();
 
             return services.BuildServiceProvider();
         }
