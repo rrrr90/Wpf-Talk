@@ -52,7 +52,7 @@ namespace Wpf_Talk.ViewModels
 
         private void SendMessage(object? obj)
         {
-            if (string.IsNullOrEmpty(MyMessage)) return;
+            if (string.IsNullOrEmpty(MyMessage.Trim())) return;
 
             _chattingRepository.SendMessage(sender: MyUid, recver: OpUid, message: MyMessage);
 
@@ -66,7 +66,6 @@ namespace Wpf_Talk.ViewModels
 
             List<ChattingItem> list = _chattings.ToList();
             list.Add(item);
-            //Chattings = [];
             Chattings = list;
 
             MyMessage = string.Empty;

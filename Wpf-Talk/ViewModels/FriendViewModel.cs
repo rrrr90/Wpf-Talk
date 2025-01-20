@@ -39,7 +39,7 @@ namespace Wpf_Talk.ViewModels
             foreach (Account account in accounts)
             {
                 if (account.ID == MyAccount?.ID) continue;
-                list.Add(new FriendItem(text: account.Nickname, "D:\\Picture\\인장주작은뭐야.jpg"));
+                list.Add(new FriendItem(id: account.ID, text: account.Nickname, "D:\\Picture\\인장주작은뭐야.jpg"));
             }
             Friends = list;
         }
@@ -56,8 +56,8 @@ namespace Wpf_Talk.ViewModels
         public ICommand OpenChatRoomCommand => new RelayCommand<object?>(OpenChatRoom);
         private void OpenChatRoom(object? obj)
         {
-            if (obj is not int opuid) return;
-            _viewService.ShowChatRoom(MyAccount!.ID, opuid);
+            if (obj is not int idx) return;
+            _viewService.ShowChatRoom(MyAccount!.ID, Friends[idx].ID);
         }
     }
 }
